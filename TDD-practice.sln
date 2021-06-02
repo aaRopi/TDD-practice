@@ -4,9 +4,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1396E5B4-6D3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FA4AC175-73A5-43B0-A50A-EED6BB8D845B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katas", "src\Katas\Katas.csproj", "{6563DA99-7697-41D4-A2C2-3ED288117564}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{CEC82FBF-DB51-4EDA-89D0-8B80BA1D52FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katas.Tests.Unit", "tests\unit\Katas.Tests.Unit\Katas.Tests.Unit.csproj", "{85E9582A-4F4F-4220-BEBC-0C733152C169}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6563DA99-7697-41D4-A2C2-3ED288117564} = {1396E5B4-6D39-4F2D-A41B-AD661A3A628B}
+		{CEC82FBF-DB51-4EDA-89D0-8B80BA1D52FB} = {FA4AC175-73A5-43B0-A50A-EED6BB8D845B}
+		{85E9582A-4F4F-4220-BEBC-0C733152C169} = {CEC82FBF-DB51-4EDA-89D0-8B80BA1D52FB}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6563DA99-7697-41D4-A2C2-3ED288117564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6563DA99-7697-41D4-A2C2-3ED288117564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6563DA99-7697-41D4-A2C2-3ED288117564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6563DA99-7697-41D4-A2C2-3ED288117564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85E9582A-4F4F-4220-BEBC-0C733152C169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85E9582A-4F4F-4220-BEBC-0C733152C169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85E9582A-4F4F-4220-BEBC-0C733152C169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85E9582A-4F4F-4220-BEBC-0C733152C169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
