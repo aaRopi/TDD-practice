@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Katas
 {
@@ -14,7 +15,14 @@ namespace Katas
 
             names = names
                 .SelectMany(name =>
-                    name.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+                {
+                    if (name.Contains('\"'))
+                    {
+                        return new[] { Regex.Unescape(name).Trim('\"') };
+                    }
+                    
+                    return name.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+                })
                 .ToArray();
             
             string[] shoutedNames = names.Where(name => name.All(char.IsUpper)).ToArray();

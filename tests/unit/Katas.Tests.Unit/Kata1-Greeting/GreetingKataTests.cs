@@ -13,6 +13,7 @@ namespace Katas.Tests.Unit
         [InlineData("Hello, Amy, Brian, and Charlotte.", "Amy", "Brian", "Charlotte")]
         [InlineData("Hello, Amy and Charlotte. AND HELLO BRIAN!", "Amy", "BRIAN", "Charlotte")]
         [InlineData("Hello, Bob, Charlie, and Dianne.", "Bob", "Charlie, Dianne")]
+        [InlineData("Hello, Bob and Charlie, Dianne.", "Bob", "\"Charlie, Dianne\"")]
         public void Greet_ShouldReturnGreetingWithAllNames_WhenCalledWithMultipleNames(string expectedResponse, params string[] nameArgs)
         {
             GreetingKata sut = new();
