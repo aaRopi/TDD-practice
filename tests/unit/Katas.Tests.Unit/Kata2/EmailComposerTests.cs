@@ -35,8 +35,8 @@ namespace Katas.Tests.Unit.Kata2
         {
             IReadOnlyList<UnusualSpending> unusualSpendings = new List<UnusualSpending>
             {
-                new(Category.Groceries, 345.56f),
-                new(Category.Golf, 1345.56f)
+                new(Category.Groceries, 345.56f, 121.78f),
+                new(Category.Golf, 1345.56f, 45.67f)
             };
 
             string subject = "Test email subject";

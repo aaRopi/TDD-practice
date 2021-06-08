@@ -34,7 +34,7 @@ namespace Katas.Tests.Unit.Kata2
         public void WarnUserWithEmail_ShouldComposeEmailAndCallEmailService_GivenNonEmptyListOfUnusualSpendings()
         {
             int userId = 56;
-            IReadOnlyList<UnusualSpending> spendings = new List<UnusualSpending> {new(Category.Groceries, 121.55f)}.AsReadOnly();
+            IReadOnlyList<UnusualSpending> spendings = new List<UnusualSpending> {new(Category.Groceries, 121.55f, 23.0f)}.AsReadOnly();
             Email email = new("Test subject", "Test body");
 
             _emailComposer.Compose(spendings).Returns(email);

@@ -34,7 +34,7 @@ namespace Katas.Tests.Unit.Kata2
                     new List<Payment>(), 
                     new List<Payment> { new Payment(345.0f, "Some description", Category.Golf) }));
 
-            response.Should().ContainSingle(us => us.Category == Category.Golf && Math.Abs(us.TotalSpending - 345.0f) < 0.01f);
+            response.Should().ContainSingle(us => us.Category == Category.Golf && Math.Abs(us.TotalSpendingCurrentMonth - 345.0f) < 0.01f);
         }
         
         [Fact]
@@ -51,8 +51,8 @@ namespace Katas.Tests.Unit.Kata2
                     .ToList();
 
             response.Should().HaveCount(2);
-            response.Should().ContainSingle(us => us.Category == Category.Golf && Math.Abs(us.TotalSpending - 345.0f) < 0.01f);
-            response.Should().ContainSingle(us => us.Category == Category.Restaurants && Math.Abs(us.TotalSpending - 205.0f) < 0.01f);
+            response.Should().ContainSingle(us => us.Category == Category.Golf && Math.Abs(us.TotalSpendingCurrentMonth - 345.0f) < 0.01f);
+            response.Should().ContainSingle(us => us.Category == Category.Restaurants && Math.Abs(us.TotalSpendingCurrentMonth - 205.0f) < 0.01f);
         }
     }
 }

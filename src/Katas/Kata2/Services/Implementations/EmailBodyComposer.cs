@@ -10,7 +10,7 @@ namespace Katas.Kata2.Implementations
         private const string Header = "Hello card user!\n\n" +
                                          "We have detected unusually high spending on your card in these categories:";
 
-        private const string SpendingDetailInfo = "\n* You spent €{totalSpendingAmount} on {spendingCategoryName}";
+        private const string SpendingDetailInfo = "\n* You spent €{totalSpendingAmountCurrentMonth} on {spendingCategoryName}. Last month this was €{totalSpendingAmountPreviousMonth}.";
 
         private const string Footer = "\n\nLove," +
                                       "\n\nThe Credit Card Company";
@@ -27,8 +27,9 @@ namespace Katas.Kata2.Implementations
             foreach (UnusualSpending spending in unusualSpendings)
             {
                 body += SpendingDetailInfo
-                    .Replace("{totalSpendingAmount}", $"{spending.TotalSpending}")
-                    .Replace("{spendingCategoryName}", $"{spending.Category.ToString().ToLower()}"); //$"\n* You spent €{spending.TotalSpending} on {spending.Category.ToString().ToLower()}";
+                    .Replace("{totalSpendingAmountCurrentMonth}", $"{spending.TotalSpendingCurrentMonth}")
+                    .Replace("{spendingCategoryName}", $"{spending.Category.ToString().ToLower()}")
+                    .Replace("{totalSpendingAmountPreviousMonth}", $"{spending.TotalSpendingLastMonth}"); //$"\n* You spent €{spending.TotalSpending} on {spending.Category.ToString().ToLower()}";
             }
 
             body += Footer;

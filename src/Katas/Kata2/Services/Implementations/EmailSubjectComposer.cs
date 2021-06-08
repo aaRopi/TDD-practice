@@ -14,7 +14,7 @@ namespace Katas.Kata2.Implementations
                 throw new InvalidOperationException("List of unusual spendings cannot be empty");
             }
 
-            return $"Unusual spending of €{unusualSpendings.Sum(us => us.TotalSpending)} detected!";
+            return $"Unusual spending of €{unusualSpendings.Sum(us => us.TotalSpendingCurrentMonth)} detected!";
         }
     }
 }

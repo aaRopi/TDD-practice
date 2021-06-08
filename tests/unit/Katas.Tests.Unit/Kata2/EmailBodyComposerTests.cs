@@ -29,14 +29,14 @@ namespace Katas.Tests.Unit.Kata2
         {
             IReadOnlyList<UnusualSpending> unusualSpendings = new List<UnusualSpending>
             {
-                new(Category.Groceries, 345.56f),
-                new(Category.Golf, 1345.56f)
+                new(Category.Groceries, 345.56f, 23.0f),
+                new(Category.Golf, 1345.56f, 0.0f)
             };
 
             string expected = "Hello card user!\n\n" +
                           "We have detected unusually high spending on your card in these categories:" +
-                          $"\n* You spent €{unusualSpendings[0].TotalSpending} on {unusualSpendings[0].Category.ToString().ToLower()}" +
-                          $"\n* You spent €{unusualSpendings[1].TotalSpending} on {unusualSpendings[1].Category.ToString().ToLower()}" +
+                          $"\n* You spent €{unusualSpendings[0].TotalSpendingCurrentMonth} on {unusualSpendings[0].Category.ToString().ToLower()}. Last month this was €{unusualSpendings[0].TotalSpendingLastMonth}." +
+                          $"\n* You spent €{unusualSpendings[1].TotalSpendingCurrentMonth} on {unusualSpendings[1].Category.ToString().ToLower()}. Last month this was €{unusualSpendings[1].TotalSpendingLastMonth}." +
                           "\n\nLove," +
                           "\n\nThe Credit Card Company";
 

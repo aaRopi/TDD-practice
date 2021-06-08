@@ -2,13 +2,15 @@ namespace Katas.Kata2.Models
 {
     public class UnusualSpending
     {
-        public UnusualSpending(Category category, float totalSpending)
+        public UnusualSpending(Category category, float totalSpendingCurrentMonth, float totalSpendingLastMonth)
         {
             Category = category;
-            TotalSpending = totalSpending;
+            TotalSpendingCurrentMonth = totalSpendingCurrentMonth;
+            TotalSpendingLastMonth = totalSpendingLastMonth;
         }
 
-        public float TotalSpending { get; }
+        public float TotalSpendingCurrentMonth { get; }
+        public float TotalSpendingLastMonth { get; }
         public Category Category { get; }
     }
 }

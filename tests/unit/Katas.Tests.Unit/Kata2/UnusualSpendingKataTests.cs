@@ -26,7 +26,7 @@ namespace Katas.Tests.Unit.Kata2
             int userId = 35;
 
             RecentPayments recentPayments = new(new Payment[]{}, new Payment[]{});
-            IReadOnlyList<UnusualSpending> unusualSpendings = new UnusualSpending[] { new(Category.Entertainment, 137.89f) };
+            IReadOnlyList<UnusualSpending> unusualSpendings = new UnusualSpending[] { new(Category.Entertainment, 137.89f, 0.0f) };
 
             _spending.FetchRecentPayments(userId).Returns(recentPayments);
 

@@ -28,11 +28,11 @@ namespace Katas.Kata2.Implementations
 
                 if (lastMonthSpend == null)
                 {
-                    unusualSpendings.Add(new UnusualSpending(currentMonthSpend.Category, currentMonthSpend.TotalSpend));
+                    unusualSpendings.Add(new UnusualSpending(currentMonthSpend.Category, currentMonthSpend.TotalSpend, 0.0f));
                 }
                 else if (currentMonthSpend.TotalSpend > lastMonthSpend.TotalSpend && Math.Abs(currentMonthSpend.TotalSpend - 1.5f * lastMonthSpend.TotalSpend) > 0.1f)
                 {
-                    unusualSpendings.Add(new UnusualSpending(currentMonthSpend.Category, currentMonthSpend.TotalSpend));
+                    unusualSpendings.Add(new UnusualSpending(currentMonthSpend.Category, currentMonthSpend.TotalSpend, lastMonthSpend.TotalSpend));
                 }
             }
 

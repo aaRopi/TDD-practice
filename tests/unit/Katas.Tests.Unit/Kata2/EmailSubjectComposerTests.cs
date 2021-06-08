@@ -30,11 +30,11 @@ namespace Katas.Tests.Unit.Kata2
         {
             IReadOnlyList<UnusualSpending> unusualSpendings = new List<UnusualSpending>
             {
-                new(Category.Groceries, 345.56f),
-                new(Category.Golf, 1345.56f)
+                new(Category.Groceries, 345.56f, 176.4f),
+                new(Category.Golf, 1345.56f, 447.34f)
             };
 
-            string expected = $"Unusual spending of €{unusualSpendings.Sum(us => us.TotalSpending)} detected!";
+            string expected = $"Unusual spending of €{unusualSpendings.Sum(us => us.TotalSpendingCurrentMonth)} detected!";
 
             string response = _sut.GetEmailSubject(unusualSpendings);
 
