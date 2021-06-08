@@ -2,19 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
+using Katas.Kata2;
 using Katas.Kata2.Implementations;
 using Katas.Kata2.Models;
+using NSubstitute;
 using Xunit;
 
 namespace Katas.Tests.Unit.Kata2
 {
     public class EmailComposerTests
     {
+        private readonly IEmailSubjectComposer _emailSubjectComposer = Substitute.For<IEmailSubjectComposer>();
+        private readonly IEmailBodyComposer _emailBodyComposer = Substitute.For<IEmailBodyComposer>();
+        
         private readonly EmailComposer _sut;
 
         public EmailComposerTests()
         {
-            _sut = new EmailComposer();
+            _sut = new EmailComposer(_emailSubjectComposer, _emailBodyComposer);
         }
 
         [Fact]
@@ -34,13 +39,11 @@ namespace Katas.Tests.Unit.Kata2
                 new(Category.Golf, 1345.56f)
             };
 
-            string subject = $"Unusual spending of €{unusualSpendings.Sum(us => us.TotalSpending)} detected!";
-            string body = "Hello card user!\n\n" +
-                          "We have detected unusually high spending on your card in these categories:" +
-                          $"\n* You spent €{unusualSpendings[0].TotalSpending} on {unusualSpendings[0].Category.ToString().ToLower()}" +
-                          $"\n* You spent €{unusualSpendings[1].TotalSpending} on {unusualSpendings[1].Category.ToString().ToLower()}" +
-                          "\n\nLove," +
-                          "\n\nThe Credit Card Company";
+            string subject = "Test email subject";
+            string body = "Test email body";
+
+            _emailSubjectComposer.GetEmailSubject(unusualSpendings).Returns(subject);
+            _emailBodyComposer.GetEmailBody(unusualSpendings).Returns(body);
 
             Email expectedEmail = new (subject, body);
             

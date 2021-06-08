@@ -7,6 +7,16 @@ namespace Katas.Kata2.Implementations
 {
     public class EmailComposer : IEmailComposer
     {
+        private readonly IEmailSubjectComposer _emailSubjectComposer;
+        private readonly IEmailBodyComposer _emailBodyComposer;
+
+        public EmailComposer(IEmailSubjectComposer emailSubjectComposer, IEmailBodyComposer emailBodyComposer)
+        {
+            _emailSubjectComposer = emailSubjectComposer;
+            _emailBodyComposer = emailBodyComposer;
+        }
+        
+
         public Email Compose(IReadOnlyList<UnusualSpending> unusualSpendings)
         {
             if (!unusualSpendings.Any())
@@ -14,18 +24,9 @@ namespace Katas.Kata2.Implementations
                 throw new InvalidOperationException("List of unusual spendings cannot be empty");
             }
 
-            string subject = $"Unusual spending of €{unusualSpendings.Sum(us => us.TotalSpending)} detected!";
+            string subject = _emailSubjectComposer.GetEmailSubject(unusualSpendings);
 
-            string body = "Hello card user!\n\n" +
-                          "We have detected unusually high spending on your card in these categories:";
-
-            foreach (UnusualSpending spending in unusualSpendings)
-            {
-                body += $"\n* You spent €{spending.TotalSpending} on {spending.Category.ToString().ToLower()}";
-            }
-            
-            body += "\n\nLove," +
-                    "\n\nThe Credit Card Company";
+            string body = _emailBodyComposer.GetEmailBody(unusualSpendings);
 
             return new Email(subject, body);
         }
